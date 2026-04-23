@@ -1,0 +1,72 @@
+.user-container {
+    width: 20%;
+
+    .user-left {
+        width: 100%;
+        padding: 2rem;
+
+        .user-info {
+            width: 100%;
+            display: flex;
+            align-items: center;
+
+            img {
+                border-radius: 50%;
+                width: 4.8rem;
+                height: 4.8rem;
+                margin-right: 1.4rem;
+            }
+
+            p {
+                text-align: left;
+                width: 100%;
+
+                .user-info-name {
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+
+                .user-info-edit {
+                    color: var(--boder-color);
+                    font-weight: 400;
+                    display: block;
+                    font-size: 1.4rem;
+
+                    svg {
+                        padding-right: 0.5rem;
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+        }
+
+        .user-account {
+            margin: 2rem 0;
+            width: 100%;
+            height: 3rem;
+
+            .user-account-item {
+                font-size: 1.5rem;
+                display: block;
+                text-transform: capitalize;
+                text-align: left;
+                padding: 1rem 0;
+                color: var(--text-black-color);
+
+                svg {
+                    font-size: 1.5rem;
+                    padding-right: 1rem;
+                }
+            }
+
+            .user-account-item:hover {
+                cursor: pointer;
+                color: var(--boder-color);
+            }
+        }
+    }
+}

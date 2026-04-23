@@ -1,0 +1,147 @@
+.edituser-container {
+    width: 100%;
+
+    .edituser-wrapper {
+        width: 100%;
+        height: 100%;
+        background: var(--background-body);
+        display: flex;
+        padding: 2rem 12rem;
+
+        .edituser-right {
+            width: 80%;
+            border-radius: 0.1rem;
+            background: var(--text-white-color);
+            font-size: 1.5rem;
+            padding: 2rem 4rem;
+
+            p {
+                text-align: left;
+                font-size: 1.8rem;
+                padding-bottom: 1.4rem;
+
+                span {
+                    font-size: 1.5rem;
+                    display: block;
+                    color: var(--text-black-hover);
+                }
+            }
+
+            .edituser-right-info {
+                padding: 3rem 2rem;
+                border-top: 0.1rem solid var(--border-line);
+                display: flex;
+
+                .edituser-right-info-left {
+                    width: 70%;
+
+                    .edituser-right-info-left-item {
+                        position: relative;
+                        width: 100%;
+                        color: var(--text-black-hover);
+                        display: flex;
+                        padding: 0.8rem 0;
+
+                        p {
+                            font-size: 1.6rem;
+                            width: 20%;
+                            text-align: right;
+                            padding-top: 1rem;
+                        }
+
+                        input {
+                            text-align: left;
+                            width: 80%;
+                            display: flex;
+                            font-size: 1.6rem;
+                            color: var(--text-black-color);
+                            margin: 0 1rem 0 3rem;
+                            padding-left: 1rem;
+                        }
+                    }
+
+                    .edituser-right-info-left-item:nth-child(6) {
+                        svg {
+                            position: absolute;
+                            right: 2rem;
+                            top: 2.4rem;
+                            cursor: pointer;
+                            font-size: 1.6rem;
+                        }
+
+                        .edituser-right-info-left-item-line {
+                            cursor: pointer;
+                            display: none;
+                            position: absolute;
+                            right: 2.8rem;
+                            top: 2rem;
+                            width: 0.2rem;
+                            height: 2.4rem;
+                            background-color: var(--text-black-hover);
+                            transform: rotate(130deg);
+                        }
+                    }
+
+                    .edituser-right-info-left-btn {
+                        display: flex;
+                        padding: 3rem 0 0 15rem;
+                        button {
+                            margin-right: 2rem;
+                            font-size: 1.5rem;
+                            font-weight: 600;
+                            color: var(--text-white-color);
+                            width: 10rem;
+                            height: 4rem;
+                            background-color: var(--background-color);
+                            border: none;
+                            border-radius: 0.2rem;
+                            outline: none;
+                        }
+
+                        button:hover {
+                            cursor: pointer;
+                            opacity: 0.8;
+                        }
+                    }
+                }
+
+                .edituser-right-info-right {
+                    width: 30%;
+                    height: 24rem;
+                    border-left: 0.1rem solid var(--border-line);
+                    padding: 0 4rem;
+
+                    img {
+                        width: 60%;
+                    }
+
+                    input#edituser-file-input {
+                        display: none;
+                    }
+
+                    label {
+                        margin: 1rem auto 1rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 10rem;
+                        height: 4rem;
+                        font-size: 1.5rem;
+                        border: 0.1rem solid var(--boder-color);
+                        border-radius: 0.3rem;
+                    }
+
+                    label:hover {
+                        cursor: pointer;
+                        opacity: 0.8;
+                    }
+
+                    span {
+                        color: var(--text-black-hover);
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+}

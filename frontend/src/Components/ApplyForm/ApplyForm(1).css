@@ -1,0 +1,125 @@
+.form-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form-overlay .apply-form {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  width: 100%;
+  max-width: 550px;
+  position: relative;
+  animation: slideUp 0.4s ease-out;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.form-overlay .apply-form h3 {
+  margin-top: -20px;
+  font-size: 2rem;
+  color: #007bff;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+.form-overlay .apply-form form {
+  display: flex;
+  flex-direction: column;
+}
+.form-overlay .apply-form form label {
+  text-align: left;
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  margin-top: 10px;
+  margin-left: 5px;
+  display: block;
+  transition: color 0.3s ease;
+}
+.form-overlay .apply-form form input,
+.form-overlay .apply-form form textarea,
+.form-overlay .apply-form form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+.form-overlay .apply-form form input:focus,
+.form-overlay .apply-form form textarea:focus,
+.form-overlay .apply-form form select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+  transform: scale(1.02);
+  outline: none;
+}
+.form-overlay .apply-form form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+.form-overlay .apply-form form .radio-group {
+  display: flex;
+  gap: 15px;
+}
+.form-overlay .apply-form form .radio-group label {
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+}
+.form-overlay .apply-form form input[type=file] {
+  padding: 6px;
+  font-size: 14px;
+  border: none;
+}
+.form-overlay .apply-form form .submit-btn {
+  background: #007bff;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: -20px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.form-overlay .apply-form form .submit-btn:hover {
+  background: #0056b3;
+  transform: scale(1.03);
+}
+.form-overlay .apply-form form .submit-btn:active {
+  transform: scale(0.98);
+}
+.form-overlay .apply-form .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.form-overlay .apply-form .close-btn:hover {
+  color: #333;
+  transform: rotate(90deg);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}/*# sourceMappingURL=ApplyForm.css.map */

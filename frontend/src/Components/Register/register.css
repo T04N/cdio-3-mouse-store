@@ -1,0 +1,102 @@
+.register-container {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 0;
+}
+.register-container .register-logo {
+  width: 48%;
+}
+.register-container .register-logo img {
+  width: 80%;
+}
+.register-container .register-logo .register-description {
+  font-size: 2rem;
+  margin-top: 2rem;
+  font-weight: 600;
+  color: var(--text-white-color);
+}
+.register-container .register-logo .register-description span {
+  display: block;
+  width: 100%;
+  font-size: 2.2rem;
+}
+.register-container .register-wrapper {
+  width: 42rem;
+  height: 78rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+}
+.register-container .register-wrapper .register-title {
+  font-size: 4rem;
+  font-weight: 600;
+  color: var(--background-color);
+  line-height: 3rem;
+  padding-top: 3rem;
+}
+.register-container .register-wrapper span {
+  display: block;
+  padding-top: 1.6rem;
+  font-size: 1.4rem;
+  color: var(--boder-color);
+}
+.register-container .register-wrapper .register-form:nth-child(1) {
+  margin-top: 2.4rem;
+}
+.register-container .register-wrapper .register-form {
+  width: 100%;
+  flex-wrap: wrap;
+  text-align: left;
+  margin: 1rem 0 0;
+}
+.register-container .register-wrapper .register-form label {
+  width: 100%;
+  font-size: 1.8rem;
+  line-height: 3rem;
+  display: block;
+}
+.register-container .register-wrapper .register-form input {
+  width: 100%;
+  height: 4.4rem;
+  font-size: 1.6rem;
+  border: 0.12rem solid var(--boder-color);
+  outline: none;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  transition: 0.2s ease-in;
+}
+.register-container .register-wrapper .register-form input:focus {
+  font-size: 1.5rem;
+  border: 0.2rem solid var(--background-color);
+}
+.register-container .register-wrapper .register-form span {
+  padding-top: 0.2rem;
+  display: flex;
+  height: 0.8rem;
+}
+.register-container .register-wrapper .btn {
+  position: relative;
+  margin: 1.6rem 0 0.8rem;
+  width: 100%;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-white-color);
+  height: 4.4rem;
+  background: var(--background-color);
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+.register-container .register-wrapper .register-register {
+  font-size: 1.4rem;
+}
+.register-container .register-wrapper .register-register .register-register-link {
+  font-size: 1.4rem;
+  padding-left: 0.4rem;
+}/*# sourceMappingURL=register.css.map */

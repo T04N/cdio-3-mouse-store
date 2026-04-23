@@ -1,0 +1,159 @@
+@charset "UTF-8";
+.cart-container {
+  width: 100%;
+}
+.cart-container .wrapper {
+  width: 100%;
+  min-height: 44vh;
+  margin: 2rem 0;
+  padding: 2rem 20rem;
+}
+.cart-container .wrapper table {
+  width: 100%;
+}
+.cart-container .wrapper table tbody {
+  width: 100%;
+}
+.cart-container .wrapper table tbody tr {
+  display: flex;
+}
+.cart-container .wrapper table tbody tr th {
+  width: 18%;
+  font-size: 1.7rem;
+  color: var(--text-white-color);
+}
+.cart-container .wrapper table tbody .header {
+  background-color: var(--text-green);
+}
+.cart-container .wrapper table tbody .cart-empty {
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.cart-container .wrapper table tbody .cart-empty img {
+  width: 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 1rem 0;
+}
+.cart-container .wrapper table tbody .cart-empty p {
+  width: 100%;
+  font-size: 1.6rem;
+}
+.cart-container .wrapper table tbody .body {
+  display: flex;
+  padding: 1rem;
+}
+.cart-container .wrapper table tbody .body td {
+  width: 18%;
+  font-size: 1.4rem;
+  /* CHỈNH SỬA Ở ĐÂY: Giảm chiều cao của hàng */
+  height: 10rem;
+}
+.cart-container .wrapper table tbody .body td img {
+  width: 100%;
+  height: 100%; /* Thêm để đảm bảo ảnh co giãn theo ô */
+  -o-object-fit: contain;
+     object-fit: contain; /* Thay đổi để ảnh không bị méo */
+}
+.cart-container .wrapper table tbody .body td p {
+  line-height: 2rem;
+  font-size: 1.4rem;
+  padding: 0 1rem;
+  display: -webkit-box;
+  /* CHỈNH SỬA Ở ĐÂY: Giảm số dòng hiển thị */
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: justify;
+}
+.cart-container .wrapper table tbody .body td span {
+  font-size: 1.4rem;
+}
+.cart-container .wrapper table tbody .body td button {
+  padding: 0.6rem 1.6rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background: var(--btn-color);
+  color: var(--text-white-color);
+  border: none;
+  outline: none;
+  border-radius: 0.6rem;
+}
+.cart-container .wrapper table tbody .body td button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+.cart-container .wrapper table tbody .body .quantity {
+  display: flex;
+  justify-content: center;
+  /* cursor: no-drop; //không cho nhập */
+  /* opacity: 0.5; //không cho nhập */
+  /* Chrome, Safari, Edge, Opera */
+}
+.cart-container .wrapper table tbody .body .quantity .plus,
+.cart-container .wrapper table tbody .body .quantity .minus {
+  height: 3rem;
+  width: 3rem;
+  padding: 0 1rem;
+  font-size: 2rem;
+  background: var(--text-green);
+  color: var(--text-white-color);
+}
+.cart-container .wrapper table tbody .body .quantity input {
+  margin: 0 0.4rem;
+  text-align: center;
+  font-size: 1.5rem;
+  height: 3rem;
+  width: 5rem;
+  outline: none;
+  border: 0.1rem solid var(--text-green);
+  /* cursor: no-drop; //không cho nhập */
+}
+.cart-container .wrapper table tbody .body .quantity input::-webkit-outer-spin-button,
+.cart-container .wrapper table tbody .body .quantity input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.cart-container .wrapper table tbody .body td:nth-child(6) {
+  width: 10%;
+}
+.cart-container .wrapper table,
+.cart-container .wrapper th {
+  border: 0.1rem solid var(--text-green);
+  border-collapse: collapse;
+  padding: 1rem;
+}
+.cart-container .wrapper .wrapper-btn {
+  width: 100%;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.cart-container .wrapper .wrapper-btn a {
+  padding: 0.8rem 2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  background: var(--text-green);
+  color: var(--text-white-color);
+  border: none;
+  outline: none;
+  border-radius: 0.4rem;
+}
+.cart-container .wrapper .wrapper-btn a:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+.cart-container .wrapper .wrapper-description {
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  background: var(--background-lightorange);
+  text-align: left;
+  color: var(--text-white-color);
+  border-radius: 1rem;
+  border: 0.1rem solid var(--border-line);
+}/*# sourceMappingURL=Cart.css.map */

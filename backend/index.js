@@ -10,9 +10,9 @@ dotenv.config();
 const app = express();
 
 mongoose.set('strictQuery', true);
-mongoose.connect(process.env.MONGOOSEDB_URL, () => {
-    console.log('CONNECT MONGOOSE SUCCESS!');
-});
+mongoose.connect(process.env.MONGOOSEDB_URL)
+    .then(() => console.log('CONNECT MONGOOSE SUCCESS!'))
+    .catch((err) => console.error('CONNECT MONGOOSE FAILED!', err));
 
 app.use(cors());
 app.use(cookieParser());

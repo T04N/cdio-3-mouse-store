@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const middlewareController = require('./middlewareController.js');
 
@@ -8,25 +8,24 @@ var AccessTokensArr = [];
 
 const authControllers = {
     //register
-    registerUser: async (req, res) => {
-        try {
-            //create new User
-            const newUser = await new User({
-                fullname: req.body.fullname,
-                email: req.body.email,
-                phone: req.body.phone,
-                address: req.body.address,
-                username: req.body.username,
-                password: req.body.password,
-            });
+   registerUser: async (req, res) => {
+    try {
+        const newUser = await new User({
+            fullname: req.body.fullname,
+            email: req.body.email,
+            phone: req.body.phone,
+            address: req.body.address,
+            username: req.body.username,
+            password: req.body.password,
+        });
 
-            //save to database
-            const user = await newUser.save();
-            res.status(200).json(user);
-        } catch (error) {
-            res.status(500).json(error);
-        }
-    },
+        const user = await newUser.save();
+        res.status(200).json(user);
+    } catch (error) {
+        console.error("REGISTER ERROR:", error); // thêm dòng này
+        res.status(500).json(error);
+    }
+},
     //token
     generateAccessToken: (user) => {
         return jwt.sign(

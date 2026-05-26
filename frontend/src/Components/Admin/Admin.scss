@@ -1,48 +1,106 @@
 .admin-container {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    background: #f0f4ff;
 
     .admin-container-navbar {
         position: fixed;
         left: 0;
-        width: 26rem;
+        width: 260px;
         height: 100%;
-        background: var(--background-black);
-        padding: 2rem;
+        background: linear-gradient(180deg, #0d47a1 0%, #1565c0 50%, #1976d2 100%);
+        padding: 24px 16px;
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+        z-index: 50;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
 
         .admin-container-item {
             width: 100%;
-            font-size: 1.6rem;
-            color: var(--text-white-color);
+            font-size: 1.45rem;
+            color: rgba(255, 255, 255, 0.85);
             display: flex;
-            padding: 1rem 0;
             align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-weight: 500;
 
             img {
-                margin-right: 1rem;
-                width: 4rem;
-                height: 4rem;
+                width: 36px;
+                height: 36px;
                 border-radius: 50%;
+                object-fit: cover;
+                border: 2px solid rgba(255, 255, 255, 0.3);
             }
 
             p {
-                text-align: center;
-                font-size: 1.6rem;
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: #fff;
+                margin: 0;
+            }
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.12);
+                color: #fff;
+                transform: translateX(4px);
             }
         }
 
-        .admin-container-item:nth-child(1) {
-            border-bottom: 0.1rem solid var(--border-white-line);
+        .admin-container-item:first-child {
+            margin-bottom: 16px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+            &:hover {
+                background: transparent;
+                transform: none;
+            }
         }
 
-        .admin-container-item:nth-child(1):hover {
-            opacity: 1;
-            cursor: default;
+        .admin-active {
+            background: rgba(255, 255, 255, 0.15) !important;
+            color: #fff;
+            font-weight: 600;
         }
 
-        .admin-container-item:hover {
-            opacity: 0.7;
-            cursor: pointer;
+        .admin-logout {
+            margin-top: auto;
+            color: rgba(255, 255, 255, 0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 16px;
+
+            &:hover {
+                color: #ff5252;
+                background: rgba(255, 82, 82, 0.1);
+            }
+        }
+    }
+
+    .admin-container-content {
+        margin-left: 260px;
+        flex: 1;
+        padding: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-container {
+        .admin-container-navbar {
+            width: 200px;
+            padding: 16px 12px;
+            .admin-container-item {
+                font-size: 1.3rem;
+                padding: 10px 12px;
+            }
+        }
+        .admin-container-content {
+            margin-left: 200px;
         }
     }
 }

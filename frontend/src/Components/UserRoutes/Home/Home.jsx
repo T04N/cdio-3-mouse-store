@@ -22,43 +22,7 @@ import { useEffect, useState } from 'react';
 import { createAxios } from '../../../createInstance';
 import { loginSuccess } from '../../../redux/authSlice';
 
-let productArr = [
-    {
-        id: 1,
-        name: 'Dell',
-        list: [],
-    },
-    {
-        id: 2,
-        name: 'Asus',
-        list: [],
-    },
-    {
-        id: 3,
-        name: 'Macbook',
-        list: [],
-    },
-    {
-        id: 4,
-        name: 'HP',
-        list: [],
-    },
-    {
-        id: 5,
-        name: 'Acer',
-        list: [],
-    },
-    {
-        id: 6,
-        name: 'Lenovo',
-        list: [],
-    },
-    {
-        id: 7,
-        name: 'Msi',
-        list: [],
-    },
-];
+const brandNames = ['Dell', 'Asus', 'Macbook', 'HP', 'Acer', 'Lenovo', 'Msi'];
 
 function Home() {
     const user = useSelector((state) => state.auth.login.currentUser);
@@ -74,35 +38,34 @@ function Home() {
         if (user) {
             getAllCarts(dispatch, axiosJWT, user.accesstoken);
         }
-        //lấy tất cả sản phẩm
         getAllProducts(dispatch);
         // eslint-disable-next-line
     }, []);
 
-    useEffect(() => {
-        if (!listProduct) return;
-        // Reset list trước khi điền lại (tránh duplicate khi re-render)
-        productArr.forEach((p) => (p.list = []));
-        for (let i = 0; i < productArr.length; i++) {
-            for (let j = 0; j < listProduct.length; j++) {
-                if (productArr[i].name === listProduct[j].name) {
-                    const id = listProduct[j]._id;
-                    productArr[i].list.push({ ...listProduct[j].product, id });
-                }
-            }
-        }
-        // eslint-disable-next-line
-    }, [listProduct]);
+    // Flatten all products into one array with brand info
+    const allProducts = listProduct
+        ? listProduct.map((item) => ({
+              ...item.product,
+              id: item._id,
+              brand: item.name,
+          }))
+        : [];
 
-    //slider
-    var settings = {
+    // Filter products by selected brand
+    const filteredProducts =
+        currentList === 'All'
+            ? allProducts
+            : allProducts.filter((p) => p.brand === currentList);
+
+    // Slider settings
+    const settings = {
         dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        autoplay: true, // Thêm dòng này để tự động chuyển slide
-        autoplaySpeed: 3500, // Thời gian chuyển slide (ms), ví dụ 3.5 giây
+        autoplay: true,
+        autoplaySpeed: 3500,
     };
 
     const handleShowproduct = (product) => {
@@ -111,16 +74,22 @@ function Home() {
         }
     };
 
-    console.log(productArr);
+    const formatPrice = (price) => {
+        return Intl.NumberFormat('de-DE', {
+            style: 'currency',
+            currency: 'VND',
+        }).format(price);
+    };
+
     return (
         <>
             {user?.admin ? (
-                <>
-                    <Admin />
-                </>
+                <Admin />
             ) : (
                 <div className="home-container">
                     <NavBar />
+
+                    {/* Hero Slider */}
                     <section className="home-slider">
                         <Slider {...settings}>
                             <img className="slide" src={slide1} alt="slide1" />
@@ -131,92 +100,102 @@ function Home() {
                             <img className="slide" src={slide6} alt="slide6" />
                         </Slider>
                     </section>
+
                     <div className="home-wrapper">
+                        {/* Brand Filter */}
                         <div className="home-menu">
-                            <Link className="home-menu-item" onClick={(e) => setCurrentList('Dell')}></Link>
-                            <Link className="home-menu-item" onClick={(e) => setCurrentList('Asus')}></Link>
-                            <Link className="home-menu-item" onClick={(e) => setCurrentList('Macbook')}></Link>
-                            <Link className="home-menu-item" onClick={(e) => setCurrentList('HP')}></Link>
-                            <Link className="home-menu-item" onClick={(e) => setCurrentList('Acer')}></Link>
-                            <Link className="home-menu-item" onClick={(e) => setCurrentList('Lenovo')}></Link>
-                            <Link className="home-menu-item" onClick={(e) => setCurrentList('Msi')}></Link>
+                            <button
+                                className={`home-menu-btn ${currentList === 'All' ? 'active' : ''}`}
+                                onClick={() => setCurrentList('All')}
+                            >
+                                Tất cả
+                            </button>
+                            {brandNames.map((brand) => (
+                                <Link
+                                    key={brand}
+                                    className={`home-menu-item ${currentList === brand ? 'active' : ''}`}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setCurrentList(brand);
+                                    }}
+                                >
+                                </Link>
+                            ))}
                         </div>
 
-                        <div className="home-product">
-                            {productArr.map((item) => {
-                                return currentList === 'All' ? ( //hiện tất cả
-                                    <div key={item.id} className="home-product-items">
-                                        <h3>{item.name}</h3>
-                                        <div className="home-product-items-box">
-                                            {item.list.map((list) => {
-                                                return (
-                                                    <div
-                                                        key={`${list.id}${Math.random(10)}`}
-                                                        className="home-product-items-box-item"
-                                                        onClick={(e) => handleShowproduct(list)}
-                                                    >
-                                                        <div className="home-product-items-box-item-img">
-                                                            <span>{list.percent}%</span>
-                                                        </div>
-                                                        <img src={list.avatar} alt="" />
-                                                        <p>{list.description}</p>
-                                                        <span className="home-product-items-box-item-discount">
-                                                            {Intl.NumberFormat('de-DE', {
-                                                                style: 'currency',
-                                                                currency: 'VND',
-                                                            }).format(list.cost)}
-                                                        </span>
-                                                        <span>
-                                                            {Intl.NumberFormat('de-DE', {
-                                                                style: 'currency',
-                                                                currency: 'VND',
-                                                            }).format(list.price)}
-                                                        </span>
-                                                        
-                                                    </div>
-                                                );
-                                            })}
+                        {/* Section Title */}
+                        <div className="home-section-header">
+                            <h2>
+                                {currentList === 'All' ? '🔥 Tất cả sản phẩm' : `💻 ${currentList}`}
+                            </h2>
+                            <span className="home-section-count">
+                                {filteredProducts.length} sản phẩm
+                            </span>
+                        </div>
+
+                        {/* Product Grid */}
+                        <div className="home-product-grid">
+                            {filteredProducts.length === 0 ? (
+                                <div className="home-empty">
+                                    <p>Chưa có sản phẩm nào trong danh mục này</p>
+                                </div>
+                            ) : (
+                                filteredProducts.map((product, index) => (
+                                    <div
+                                        key={product.id}
+                                        className="product-card"
+                                        onClick={() => handleShowproduct(product)}
+                                        style={{ animationDelay: `${index * 0.05}s` }}
+                                    >
+                                        {/* Sale Badge */}
+                                        {product.percent > 0 && (
+                                            <div className="product-card__badge">
+                                                -{product.percent}%
+                                            </div>
+                                        )}
+
+                                        {/* Brand Tag */}
+                                        <div className="product-card__brand">{product.brand}</div>
+
+                                        {/* Product Image */}
+                                        <div className="product-card__img">
+                                            <img src={product.avatar} alt={product.description} />
+                                        </div>
+
+                                        {/* Product Info */}
+                                        <div className="product-card__info">
+                                            <h4 className="product-card__name">{product.description}</h4>
+
+                                            <div className="product-card__prices">
+                                                <span className="product-card__price">
+                                                    {formatPrice(product.price)}
+                                                </span>
+                                                {product.cost > product.price && (
+                                                    <span className="product-card__cost">
+                                                        {formatPrice(product.cost)}
+                                                    </span>
+                                                )}
+                                            </div>
+
+                                            {/* Specs Preview */}
+                                            {product.cpu && (
+                                                <div className="product-card__specs">
+                                                    <span>💻 {product.cpu}</span>
+                                                    {product.hardrive && <span>💾 {product.hardrive}</span>}
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Hover Overlay */}
+                                        <div className="product-card__overlay">
+                                            <span>Xem chi tiết →</span>
                                         </div>
                                     </div>
-                                ) : item.name === currentList ? ( //hiện theo danh mục(asus, acer,..)
-                                    <div key={item.id} className="home-product-items">
-                                        <h3>{item.name}</h3>
-                                        <div className="home-product-items-box">
-                                            {item.list.map((list) => {
-                                                return (
-                                                    <div
-                                                        key={`${list.id}${Math.random(10)}`}
-                                                        className="home-product-items-box-item"
-                                                        onClick={(e) => handleShowproduct(list)}
-                                                    >
-                                                        <div className="home-product-items-box-item-img">
-                                                            <span>{list.percent}%</span>
-                                                        </div>
-                                                        <img src={list.avatar} alt="" />
-                                                        <p>{list.description}</p>
-                                                        <span>
-                                                            {Intl.NumberFormat('de-DE', {
-                                                                style: 'currency',
-                                                                currency: 'VND',
-                                                            }).format(list.price)}
-                                                        </span>
-                                                        <span className="home-product-items-box-item-discount">
-                                                            {Intl.NumberFormat('de-DE', {
-                                                                style: 'currency',
-                                                                currency: 'VND',
-                                                            }).format(list.cost)}
-                                                        </span>
-                                                    </div>
-                                                );
-                                            })}
-                                        </div>
-                                    </div>
-                                ) : (
-                                    ''
-                                );
-                            })}
+                                ))
+                            )}
                         </div>
                     </div>
+
                     <Footer />
                 </div>
             )}

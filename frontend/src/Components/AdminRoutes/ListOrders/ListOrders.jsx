@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Admin from '../../Admin/Admin';
+import AdminSidebar from '../../Admin/AdminSidebar';
 import './ListOrders.scss';
 import { deleteOrder, getAllOrders, updateOrder } from '../../../redux/apiRequest';
 import { createAxios } from '../../../createInstance';
@@ -124,8 +124,8 @@ function ListOrders() {
                             </div>
                             <div className="wrapper-item">
                                 <span>Phương thức thanh toán</span>
-                                <select onChange={(e) => setPaymentMethods(e.target.value)}>
-                                    <option defaultValue="" disabled selected hidden>
+                                <select value={paymentMethods} onChange={(e) => setPaymentMethods(e.target.value)}>
+                                    <option value="" disabled hidden>
                                         Chọn phương thức thanh toán
                                     </option>
                                     <option value="1">Thanh toán khi nhận hàng</option>
@@ -134,8 +134,8 @@ function ListOrders() {
                             </div>
                             <div className="wrapper-item">
                                 <span>Trạng thái đơn hàng</span>
-                                <select onChange={(e) => setOrderStatus(e.target.value)}>
-                                    <option defaultValue="" disabled selected hidden>
+                                <select value={orderStatus} onChange={(e) => setOrderStatus(e.target.value)}>
+                                    <option value="" disabled hidden>
                                         Chọn một tùy chọn
                                     </option>
                                     <option value="1">Chờ Xác Nhận</option>
@@ -155,7 +155,7 @@ function ListOrders() {
                 </div>
             </div>
             <div className="listorder-container">
-                <Admin />
+                <AdminSidebar />
                 <div className="listorder-header">Danh sách đơn hàng</div>
                 <table>
                     <tbody>

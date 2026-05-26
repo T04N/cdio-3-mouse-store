@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createAxios } from '../../../createInstance';
 import { deleteUser, getAllUsers, updateListUser } from '../../../redux/apiRequest';
 import { loginSuccess } from '../../../redux/authSlice';
-import Admin from '../../Admin/Admin';
+import AdminSidebar from '../../Admin/AdminSidebar';
 
 function ListUsers() {
     const user = useSelector((state) => state.auth.login?.currentUser);
@@ -144,7 +144,7 @@ function ListUsers() {
                 </div>
             </div>
             <div className="listusers-container">
-                <Admin />
+                <AdminSidebar />
                 <div className="listusers-header">Danh sách người dùng</div>
                 <p style={{ fontSize: '1.6rem' }}>{msg}</p>
                 <table>

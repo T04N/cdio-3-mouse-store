@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Admin from '../../Admin/Admin';
+import AdminSidebar from '../../Admin/AdminSidebar';
 import './ListProducts.scss';
 import { createProduct, deleteProduct, getAllProducts, updateProduct } from '../../../redux/apiRequest';
 import { createAxios } from '../../../createInstance';
@@ -329,7 +329,7 @@ function ListProducts() {
                 </div>
             </div>
             <div className="listproduct-container">
-                <Admin />
+                <AdminSidebar />
                 <div className="listproduct-header">Danh sách sản phẩm</div>
                 <div className="listproduct-container-btn">
                     <button className="btn-add" onClick={(e) => handleShowProduct()}>
